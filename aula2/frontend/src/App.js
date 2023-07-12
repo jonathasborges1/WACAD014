@@ -63,7 +63,7 @@ function App() {
     <div className="App">
       <header className="App-header">
 
-        <Table/>
+        {/* <Table/> */}
         
         <Navbar navbarOptions={navbarOptions}/>
 
