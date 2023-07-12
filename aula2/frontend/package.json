@@ -41,6 +41,7 @@
     ]
   },
   "devDependencies": {
+    "@types/bootstrap": "^5.2.6",
     "@types/typescript": "^2.0.0",
     "typescript": "^5.1.6"
   }

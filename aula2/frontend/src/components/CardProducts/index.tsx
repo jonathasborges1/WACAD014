@@ -1,37 +1,47 @@
+/* eslint-disable jsx-a11y/img-redundant-alt */
 import React from 'react';
 
-interface PropsCardProduct {
-  children?: React.ReactNode;
+interface ICardProduct {
   src?: string;
   title?: string;
+  price?: string;
   subtitle?: string;
 }
 
-const CardProducts: React.FC<PropsCardProduct> = ({ children, ...props }) => {
+interface PropsCardProduct {
+  children?: React.ReactNode;
+  cardProducts?: ICardProduct[];
+}
+
+const CardProduct: React.FC<{cardProduct: ICardProduct}> = ({cardProduct}) => {
   return (
-    <div className='container'>
-
-      <div className="row">
-        
-        <div className="col-sm-12 col-md-6 col-lg-4">
-
-          <div className="card" style={{border: "0px solid red"}} >
-
-            <img className="card-img-top" src={props.src} alt="Card image cap" />
-            <div className="card-body">
-              <h5 className="card-title">{props.title}</h5>
-              <p className="card-text">{props.subtitle}</p>
-            </div>
-            <div className="card-footer">
-              <small className="text-muted">Last updated 3 mins ago</small>
-            </div>
+        <div className="card" style={{ border: "0px solid red", margin: "40px" }}>
+          <img className="card-img-top" src={cardProduct.src} alt="Card image cap" />
+          <div className="card-body">
+          <p className="card-text">Preco: {cardProduct.price}</p>
+            <h5 className="card-title">{cardProduct.title}</h5>
+            <p className="card-text">{cardProduct.subtitle}</p>
           </div>
-
-        </div>
-
+          <div className="card-footer">
+            <small className="text-muted">Last updated 3 mins ago</small>
+          </div>
       </div>
+  )
+}
 
-    </div>
+const CardProducts: React.FC<PropsCardProduct> = ({ children, cardProducts, ...props }) => {
+  return (
+    <div className="container">
+      <div className="row">
+        {cardProducts.map((card, index) => {  
+          return(
+            <div key={index} className="col-sm-12 col-md-6 col-lg-4">
+              <CardProduct cardProduct={card}  />
+            </div>
+          )
+        })}
+      </div>
+  </div>
 
   );
 }
