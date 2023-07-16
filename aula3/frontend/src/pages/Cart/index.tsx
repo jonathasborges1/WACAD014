@@ -22,7 +22,20 @@ const CartPage: React.FC<Props> = () => {
    return (
       <>
          <h1>Cart Page</h1>
-         <TableCustom THead={THead} characterData={characterData} removecharacter={removeProductFromCart}></TableCustom>
+         {cart.length === 0 ? 
+            (
+               <>
+                  Seu carrinho está vazio =/ 
+               </>
+            ) 
+         : 
+            ( 
+            <TableCustom 
+               THead={THead} 
+               characterData={characterData} 
+               removecharacter={removeProductFromCart}/>
+            )
+         }
       </>
    )
 }
